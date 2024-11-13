@@ -536,7 +536,7 @@ public class BookingService implements BookingServiceIntf {
 		RegistrationBookingEntity entity = null;
 		try {
 			// This call will check if the PRID belongs to the logged in user or not
-			serviceUtil.checkApplicationStatus(preRegID);
+			//serviceUtil.checkApplicationStatus(preRegID);
 			entity = bookingDAO.findByPreRegistrationId(preRegID);
 
 			bookingRegistrationDTO.setRegDate(entity.getRegDate().toString());
