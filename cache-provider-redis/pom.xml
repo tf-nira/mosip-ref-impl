@@ -24,7 +24,7 @@
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
 
         <!-- spring -->
-        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+        <spring.boot.version>2.7.18</spring.boot.version>
         <powermock.beta.version>2.0.7</powermock.beta.version>
         <junit.version>4.13.1</junit.version>
         <redis.version>3.12.12</redis.version>
