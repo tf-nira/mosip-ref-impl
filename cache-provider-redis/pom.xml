@@ -168,6 +168,29 @@
             </build>
         </profile>
     </profiles>
+         <scm>
+                <connection>scm:git:git://github.com/mosip/mosip-ref-impl.git</connection>
+                <developerConnection>scm:git:ssh://github.com:mosip/mosip-ref-impl.git</developerConnection>
+                <url>https://github.com/mosip/mosip-ref-impl</url>
+                <tag>HEAD</tag>
+        </scm>
+		<licenses>
+          <license>
+                <name>MPL 2.0</name>
+                <url>https://www.mozilla.org/en-US/MPL/2.0/</url>
+          </license>
+        </licenses>
+		<developers>
+                <developer>
+                  <name>Mosip</name>
+                  <email>mosip.emailnotifier@gmail.com</email>
+                  <organization>io.mosip</organization>
+                  <organizationUrl>https://github.com/mosip/mosip-ref-impl</organizationUrl>
+                </developer>
+        </developers>
+		<name>redis cache jar</name>
+		<description>redis cache implementation </description>
+        <url>https://github.com/mosip/mosip-ref-impl</url>
 
 
 </project>
