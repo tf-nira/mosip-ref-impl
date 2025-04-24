@@ -58,8 +58,8 @@ public class RedisConfig {
 		  RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
   	    redisConfig.setHostName(hostname);
   	    redisConfig.setPort(port);
-  	    redisConfig.setUsername(username);
-  	    redisConfig.setPassword(password);
+  	  //  redisConfig.setUsername(username);
+  	    redisConfig.setPassword(RedisPassword.of(password));
   	    try {
   	        // Load CA certificate into a TrustStore
   	        KeyStore trustStore = KeyStore.getInstance("JKS");
