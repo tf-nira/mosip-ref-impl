@@ -140,7 +140,9 @@ public class RedisConfig {
   	                .build();
 
   	        JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory(redisConfig, clientConfig);
-  	        jedisConnectionFactory.afterPropertiesSet();
+  	        jedisConnectionFactory.getPoolConfig().setMinIdle(10);
+                jedisConnectionFactory.getPoolConfig().setMaxIdle(30);
+		jedisConnectionFactory.afterPropertiesSet();
   	        // Test the connection
               try (Jedis jedis = (Jedis) jedisConnectionFactory.getConnection().getNativeConnection()) {
                   jedis.set("testKey", "Hello Redis!"); // Set a key-value pair
@@ -151,8 +153,6 @@ public class RedisConfig {
               } catch (Exception e) {
                   System.err.println("Redis connection test failed: " + e.getMessage());
               }
-		jedisConnectionFactory.getPoolConfig().setMinIdle(10);
-                jedisConnectionFactory.getPoolConfig().setMaxIdle(30);
   	        return jedisConnectionFactory;
 
   	    } catch (Exception e) {
