@@ -151,6 +151,8 @@ public class RedisConfig {
               } catch (Exception e) {
                   System.err.println("Redis connection test failed: " + e.getMessage());
               }
+		jedisConnectionFactory.getPoolConfig().setMinIdle(10);
+                jedisConnectionFactory.getPoolConfig().setMaxIdle(30);
   	        return jedisConnectionFactory;
 
   	    } catch (Exception e) {
@@ -162,6 +164,8 @@ public class RedisConfig {
 	@Bean
 	public RedisTemplate<String, Object> redisTemplate() {
 		RedisTemplate<String, Object> template = new RedisTemplate<>();
+		jedisConnectionFactory().getPoolConfig().setMinIdle(10);
+        	jedisConnectionFactory().getPoolConfig().setMaxIdle(30);
 		template.setConnectionFactory(jedisConnectionFactory());
 		return template;
 	}
