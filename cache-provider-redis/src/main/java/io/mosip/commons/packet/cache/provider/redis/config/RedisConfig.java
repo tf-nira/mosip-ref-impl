@@ -29,8 +29,13 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Configuration
 public class RedisConfig {
+	
+	private static final Logger logger = LoggerFactory.getLogger(RedisConfig.class);
 
 	@Value("${redis.cache.hostname}")
 	private String hostname;
@@ -145,18 +150,20 @@ public class RedisConfig {
 		jedisConnectionFactory.afterPropertiesSet();
   	        // Test the connection
               try (Jedis jedis = (Jedis) jedisConnectionFactory.getConnection().getNativeConnection()) {
+            	  long start = System.currentTimeMillis();
                   jedis.set("testKey", "Hello Redis!"); // Set a key-value pair
                   String value = jedis.get("testKey");  // Retrieve the value
-                  System.out.println("Stored value in Redis: " + value);
-
-                  System.out.println("Redis connection test successful!");
+                  
+                  long duration = System.currentTimeMillis() - start;
+                  
+                  logger.info("Redis connection test successful. testKey={}, timeTaken={} ms", value, duration);
               } catch (Exception e) {
-                  System.err.println("Redis connection test failed: " + e.getMessage());
+            	  logger.error("Redis connection test failed", e);
               }
   	        return jedisConnectionFactory;
 
   	    } catch (Exception e) {
-  	        e.printStackTrace();
+  	    	logger.error("Error initializing Redis connection", e);
   	        return null;
   	    }
 	}
